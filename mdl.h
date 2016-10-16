@@ -1,9 +1,15 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
 #ifndef __MDL_H__
 #define __MDL_H__
 
 
 
+<<<<<<< HEAD
+#endif //__MDL_H_
+=======
 
 
 #endif
@@ -250,3 +256,4 @@ void KruskalMST(Graph* graph);
 
 #endif //__MDL_H_
 >>>>>>> refs/remotes/origin/pr/2
+>>>>>>> refs/remotes/origin/master
