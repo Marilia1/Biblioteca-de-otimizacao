@@ -362,4 +362,348 @@ void KruskalMST(Graph* graph)
     	std::cout << result[i].src << " -- " << result[i].dest << " == " << result[i].weight << std::endl;
     return;
 }
+
+
+void shortestPathD(int graph[][V3])
+{
+	int dist[V3][V3];
+
+	for(int i =0; i<V3 ; ++i)
+	{
+		for (int j = 0; j < V3; ++j)
+		{
+			dist[i][j] = graph[i][j];
+		}
+
+	}
+	for(int i =0; i<V3;++i)
+	{
+		for(int j =0;j<V3;++j)
+		{
+			for(int k=0;k<V3;++k)
+			{
+				if(dist[i][j]!= INF &&
+				   dist[j][k]!= INF && 
+					dist[i][j]+dist[j][k]<dist[i][k])
+				{
+					dist[i][k] = dist[i][j] + dist[j][k];
+				}
+			}
+		}
+	}
+	  for (int i = 0; i < V3; i++)
+    	{
+		  for (int j = 0; j < V3; j++)
+	        {
+	            if (dist[i][j] == INF)
+	            {
+	                 std::cout<<" INF" ;
+	            }
+	            else
+	            {
+	                std::cout<<" " << dist[i][j];
+	            }
+	        }
+        std::cout<<std::endl;
+    		}
+		}
+
+Box::Box(){
+	h =0;
+	w = 0;
+	d = 0;
+	calcBase();
+}
+Box::Box(int i,int j,int k){
+
+	h = i;
+	w = j;
+	d = k;
+	calcBase();
+}
+
+int Box::calcBase(){
+	base = w * d;
+	return base;
+}
+
+int min1 (int x, int y)
+{ return (x < y)? x : y; }
+
+int max1 (int x, int y)
+{ return (x > y)? x : y; }
+
+int maxHeight(std::vector<Box> &x ,int n){
+	std::vector<Box> rot(3*n);
+	int index = 0;
+	for(int i = 0; i<n ;i++){
+		rot[index]=x[i];
+		index++;
+
+	  	rot[index].h = x[i].w;
+     	rot[index].d = max1(x[i].h, x[i].d);
+      	rot[index].w = min1(x[i].h, x[i].d);
+      	rot[index].calcBase();
+      	index++;
+ 
+    
+      	rot[index].h = x[i].d;
+      	rot[index].d = max1(x[i].h, x[i].w);
+      	rot[index].w = min1(x[i].h, x[i].w);
+      	rot[index].calcBase();
+      	index++;	
+	}
+
+	n = 3*n;
+	std::sort(rot.begin(),rot.end(),EntityComp());
+	
+	int msh[n];
+   for (int i = 0; i < n; i++ )
+      msh[i] = rot[i].h;
+ 
+   
+   for (int i = 1; i < n; i++ )
+      for (int j = 0; j < i; j++ )
+         if ( rot[i].w < rot[j].w &&
+              rot[i].d < rot[j].d &&
+              msh[i] < msh[j] + rot[i].h
+            )
+         {
+              msh[i] = msh[j] + rot[i].h;
+         }
+ 
+ 
+ 
+   int max = -1;
+   for ( int i = 0; i < n; i++ )
+      if ( max < msh[i] )
+         max = msh[i];
+ 
+   return max;
+}
+
+
+int dictionaryContains(std::string word)
+{
+    std::string dictionary[] = {"mobile","samsung","sam","sung","man","mango",
+                           "icecream","and","go","i","like","ice","cream"};
+    int size = sizeof(dictionary)/sizeof(dictionary[0]);
+    for (int i = 0; i < size; i++)
+        if (dictionary[i].compare(word) == 0)
+           return true;
+    return false;
+}
+
+std::string lastWord(std::string s)
+{
+    std::string x = " ";
+    std::string y;
+
+    for(int i = s.size()-2; i>0;--i)
+    {
+        if(s[i] == x[0] || i==0 )
+        {
+       
+            y= s.substr(i,s.size()-i);
+            break;
+        }
+    }
+    return y;
+}
+
+bool wordBreak(std::string str)
+{
+     
+     std::string b;
+     std::string a;
+     std::string c;   
+    int size = str.size();
+    if (size == 0)   return true;
+ 
+    
+    bool wb[size+1];
+    memset(wb, 0, sizeof(wb)); 
+ 
+    for (int i=1; i<=size; i++)
+    {
+        
+        if (wb[i] == false && dictionaryContains( str.substr(0, i) ))
+        {
+            wb[i] = true;
+            b.append(" ");
+            b.append(str.substr(0,i));
+            b.append(" ");
+         
+        }
+        
+        if (wb[i] == true)
+        {
+          
+         
+ 
+            for (int j = i+1; j <= size; j++)
+            {
+                
+                if (wb[j] == false && dictionaryContains( str.substr(i, j-i) ))
+                {
+                  
+                    wb[j] = true;
+                    c =str.substr(i,j-i);
+                    a = lastWord(b);
+                    a.erase(0,1);
+                    if(a.size()>1){
+                    a.pop_back();
+                  }
+                  
+
+                    if(c.find(a)!= std::string::npos)
+                    {
+                        if(!c.compare(a))
+                        {
+                           
+                          b.append(str.substr(i,j-i));
+                          b.append(" ");       
+                        }
+                        else 
+                        {
+                           
+                         b.erase(b.size()-(a.size()+1),a.size());
+                         b.append(str.substr(i,j-i));
+                         b.append(" ");    
+                     }
+                    }
+                    if(c.find(a)==std::string::npos)
+                    {
+                        
+                    b.append(str.substr(i,j-i));
+                    b.append(" ");    
+                    }
+                   
+                }
+            }
+ 
+                
+                
+            }
+        }
+    
+ 
+ 
+    std::cout<< b <<std::endl;
+ 
+   
+    return false;
+}
+
+int minDistance(int dist[], bool sptSet[])
+{
+   // Initialize min value
+   int min = INT_MAX, min_index;
+  
+   for (int v = 0; v < V; v++)
+     if (sptSet[v] == false && dist[v] <= min)
+         min = dist[v], min_index = v;
+  
+   return min_index;
+}
+
+int printSolution(int dist[], int n)
+{
+   printf("Vertex   Distance from Source\n");
+   for (int i = 0; i < V1; i++)
+      printf("%d \t\t %d\n", i, dist[i]);
+}
+
+void dijkstra(int graph[V1][V1], int src)
+{
+     int dist[V1];     
+  
+     bool sptSet[V1]; 
+  
+    
+     for (int i = 0; i < V1; i++)
+        dist[i] = INT_MAX, sptSet[i] = false;
+  
+    
+     dist[src] = 0;
+  
+     
+     for (int count = 0; count < V1-1; count++)
+     {
+       
+       int u = minDistance(dist, sptSet);
+  
+       
+       sptSet[u] = true;
+  
+     
+       for (int v = 0; v < V1; v++)
+  
+         
+         if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX 
+                                       && dist[u]+graph[u][v] < dist[v])
+            dist[v] = dist[u] + graph[u][v];
+     }
+  
+    
+     printSolution(dist, V1);
+}
+
+int minKey(int key[], bool mstSet[])
+{
+  
+   int min = INT_MAX, min_index;
+ 
+   for (int v = 0; v < V2; v++)
+     if (mstSet[v] == false && key[v] < min)
+         min = key[v], min_index = v;
+ 
+   return min_index;
+}
+
+int printMST(int parent[], int n, int graph[V2][V2])
+{
+   printf("Edge   Weight\n");
+   for (int i = 1; i < V2; i++)
+      printf("%d - %d    %d \n", parent[i], i, graph[i][parent[i]]);
+}
+
+void primMST(int graph[V2][V2])
+{
+     int parent[V2]; 
+     int key[V2];  
+     bool mstSet[V2];  
+ 
+    
+     for (int i = 0; i < V2; i++)
+        key[i] = INT_MAX, mstSet[i] = false;
+ 
+     
+     key[0] = 0;     
+     parent[0] = -1; 
+ 
+   
+     for (int count = 0; count < V2-1; count++)
+     {
+        
+        int u = minKey(key, mstSet);
+ 
+     
+        mstSet[u] = true;
+ 
+       
+        for (int v = 0; v < V2; v++)
+ 
+          
+          if (graph[u][v] && mstSet[v] == false && graph[u][v] <  key[v])
+             parent[v]  = u, key[v] = graph[u][v];
+     }
+ 
+    
+     printMST(parent, V2, graph);
+}
+
+
+
+
 >>>>>>> refs/remotes/origin/pr/2
