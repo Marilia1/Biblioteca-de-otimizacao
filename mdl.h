@@ -4,6 +4,9 @@
 #include <algorithm>
 #include <limits.h>
 #include <cstdio>
+#include <vector>
+#include <string>
+
 
 =======
 <<<<<<< HEAD
@@ -112,20 +115,8 @@ void Grafo::addAresta(int v, int w)
 void Grafo::Colorir()
 
 
-<<<<<<< HEAD
-#endif //__MDL_H_
-=======
 
 
-#endif
-=======
-#include <vector>
-#include <string>
-
-#ifndef __MDL_H__
-#define __MDL_H__
-
-#define MAX_TREE_HT 100
 //--------------- Pogramação dinamica ------------------
 /*
 Retorna o maior entre dois inteiros.
