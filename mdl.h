@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 #include <iostream>
 #include <list>
+#include <algorithm>
+#include <limits.h>
+#include <cstdio>
 
 =======
 <<<<<<< HEAD
@@ -10,7 +13,10 @@
 >>>>>>> refs/remotes/origin/master
 #ifndef __MDL_H__
 #define __MDL_H__
-
+#define INF INT_MAX
+#define V1 9
+#define V2 5
+#define V3 4
 //-----------------Programação Dinamica------------------
 //Os algoritmos trabalhados na programação dinamica sera:
 //Triângulo de Pascal
@@ -350,9 +356,98 @@ Função principal para construir MST usando algoritmo de Kruskal.
 Parametro: Grafo que se deseja construir a MST.
 Retorno: Não há.
 */
-// The main function to construct MST using Kruskal's algorithm
 void KruskalMST(Graph* graph);
 
+/*Função que recebe como parametro o grafo 
+como um array multidimensional de inteiros
+e imprime uma "tabela" com as menores distancias*/
+void shortestPathD(int graph[][V3]);	
+
+	
+/*classe que representa uma caixa*/
+class Box{
+public:
+	int h,w,d;
+	int base;
+	
+
+Box();
+Box(int i,int j,int k);
+
+int calcBase();
+	
+
+};
+
+
+/*Struct para ser usada na função de sort*/
+struct EntityComp;
+
+/*Função para retornar o minimo entre dois numeros,
+parametros:inteiros*/
+int min1 (int x, int y);
+
+/*Função para retornar o max entre dois numeros,
+parametros: inteiros*/
+int max1 (int x, int y);
+	
+/*Função para retornar a maior altura que podemos
+empilhar as caixas, parametros: vector de caixas 
+e numero de caixas*/
+int maxHeight(std::vector<Box> &x ,int n);
+
+/*Função para checar se uma palavra está no dicionário ou não,
+entrada uma string retorna um inteiro 1 se estiver e 
+zero se nao estiver*/
+int dictionaryContains(std::string word);
+
+/*função que recebe como entrada uma string
+e retorna a ultima palavra dela
+(considerando que a string comece e termine com 
+espaço em branco)*/
+std::string lastWord(std::string s);
+
+/*Função que retorna false se nao
+der pra dividir(de acordo com o dicionário)
+ imprime uma opção de repartição*/
+bool wordBreak(std::string str);
+	
+/*Função para achar o vertice com a menor distancia
+do conjunto de vertices que nao estao na arvore do menor caminho
+entrada : um array de inteiros com as distancias e um array de booleans
+dziendo se está contido ou nao*/
+int minDistance(int dist[], bool sptSet[]);
+
+/*Função para imprimir a "tabela" de distancia
+entrada: um array de inteiros com as distancias e
+o numero de vertices */
+int printSolution(int dist[], int n);
+
+/*Função que acha o caminho mais curto usando o algoritmo
+de dijkstra para um grafo representado por matriz de adjacencia 
+entrada o grafo como um array multidimensional de inteiros e a 
+origem como um inteiro*/
+void dijkstra(int graph[V1][V1], int src);
+
+/*Função para achar o vertice com a menor 
+chave do conjunto de vertices não incluídos na Arvore 
+entrada um array de inteiros com as chaves e um array de 
+booleans com true se estiver contido e false se nao
+estiver contido */
+int minKey(int key[], bool mstSet[]);
+
+/*Função para imprimir a arvore armazenada em parent[]
+entrada a arvore como um array, o numero de vertices como um inteiros e
+o grafo como um array de inteiros multidimensional*/
+int printMST(int parent[], int n, int graph[V2][V2]);
+
+/*Função para construir e imprimir o grafo
+usando a matriz de adjacencia, entrada: o grafo 
+como um array multidimensional de inteiros*/
+void primMST(int graph[V2][V2]);
+
+	
+	
 #endif //__MDL_H_
 >>>>>>> refs/remotes/origin/pr/2
 >>>>>>> refs/remotes/origin/master
