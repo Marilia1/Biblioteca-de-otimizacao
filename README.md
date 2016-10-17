@@ -28,3 +28,15 @@ Coloração de grafos
 Triângulo de Pascal  
 Troco em moedas  
 Mochila binária  
+
+##Testes
+###Distancia de edição
+Primeira linha é o numero de casos em seguida strings a serem usadas separadas por espaço.
+###Maior subsequência comum
+Primeira linha é o numero de casos em seguida strings a serem usadas separadas por espaço.
+###Soma de subconjunto
+Primeira linha é o numero de casos em seguida os teste, com o primeiro número sendo o tamanho do conjunto do do problemas, conjunto do problema e por último o  numero soma.
+###Árvore geradora mínima (Algoritmo de Kruskal)
+Primeira linha é o numero de casos em seguida os teste. Primeiro do caso é o número de aresta seguido pelas arestas que segue o padrão, fonte, destino e peso. 
+###Compressão de dados (Código de Huffman)
+Primeira linha é o numero de casos em seguida os teste. Numero de dados, dados e frequêcia de dados
