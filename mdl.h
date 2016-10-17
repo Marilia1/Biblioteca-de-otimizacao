@@ -381,7 +381,13 @@ int calcBase();
 
 
 /*Struct para ser usada na função de sort*/
-struct EntityComp;
+struct EntityComp {
+ 
+  bool operator()(const Box& s1, const Box& s2) const {
+      
+          return s1.base > s2.base;
+      }
+};
 
 /*Função para retornar o minimo entre dois numeros,
 parametros:inteiros*/
