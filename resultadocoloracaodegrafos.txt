@@ -1,0 +1,13 @@
+Cor do grafo 1
+Vertex 0 --->  Color 0
+Vertex 1 --->  Color 1
+Vertex 2 --->  Color 2
+Vertex 3 --->  Color 0
+Vertex 4 --->  Color 1
+
+Cor do grafo 2
+Vertex 0 --->  Color 0
+Vertex 1 --->  Color 1
+Vertex 2 --->  Color 2
+Vertex 3 --->  Color 0
+Vertex 4 --->  Color 3
