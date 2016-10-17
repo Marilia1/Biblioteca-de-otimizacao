@@ -609,9 +609,9 @@ int minDistance(int dist[], bool sptSet[])
 
 int printSolution(int dist[], int n)
 {
-   printf("Vertex   Distance from Source\n");
+   std::cout<<"Vertex   Distance from Source"<<std::endl;
    for (int i = 0; i < V1; i++)
-      printf("%d \t\t %d\n", i, dist[i]);
+      std::cout<< i <<" " <<dist[i]<<std::endl;;
 }
 
 void dijkstra(int graph[V1][V1], int src)
@@ -663,9 +663,9 @@ int minKey(int key[], bool mstSet[])
 
 int printMST(int parent[], int n, int graph[V2][V2])
 {
-   printf("Edge   Weight\n");
+   std::cout<<"Edge   Weight"<<std::endl;
    for (int i = 1; i < V2; i++)
-      printf("%d - %d    %d \n", parent[i], i, graph[i][parent[i]]);
+    std::cout<<parent[i]<<" " << i << " " <<graph[i][parent[i]]<<std::endl;
 }
 
 void primMST(int graph[V2][V2])
