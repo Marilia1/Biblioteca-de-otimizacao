@@ -1,0 +1,13 @@
+Arquivo teste do Triangulo de pascal
+10
+12 3
+4 4
+5 2
+6 2
+7 2
+0 0
+4 3
+8 5
+10 4
+16 6
+
