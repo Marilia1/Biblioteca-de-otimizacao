@@ -48,7 +48,7 @@ O terceiro programa é o de mochila binária, onde a ideia é que temos uma mchi
 tem a capacidade para suportar um peso n, e temos objetos com diferentes pesos, e queremos
 saber quais itens a mochila aguenta*/
 
-int max(int a, int b) { return (a > b)? a : b; }
+int max(int a, int b)
 
 // Retrona o valor máximo que pode ser colocado na mochila com uma capacidade C
 int knapSack(int C, int pitem[], int val[], int n)
@@ -77,13 +77,10 @@ struct Item //estrutura que representa item
 // Função que compara os intes de acordo com a relação do seu valor pelo peso
 bool cmp(struct Item a, struct Item b);
 
-return r1 > r2; //retorna resultado da relação entre os pesos e compara r1 com r2
+
 /* Função principal que recebe como parametro a capacidade da mochila e os pesos dos itens
 que se deseja colocar dentro da mochila*/
 double fractionalKnapsack(int C, struct Item arr[], int n)
-
-// retorna o valor final
-return valorfinal;
 
 
 
@@ -95,11 +92,7 @@ utilizar cores mínimas, mas garante um limite superior do número de cores.
 O algoritmo básico nunca usa mais do que d cores + 1, onde d é o grau máximo 
 de um vértice no gráfico dado. */
 
-//Classe que representa um grafo não direcionavel
-class Grafo
-{
-    int V;    // número de vértices
-    list<int> *adj;    // array dinamico de lista de adjacencia
+
 
 // função que add aresta para o grafo
     void addAresta(int v, int w);
